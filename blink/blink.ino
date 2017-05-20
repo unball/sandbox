@@ -32,17 +32,20 @@ void setup(){
 
 
 void loop() {
+  Serial.println("a");
 
   if (Serial.available() > 0){
-    int m = Serial.read();
+    m = Serial.read();
+    }
    
   if (m<0){
     m=0;
   }
-  if (m<255){
+  if (m>255){
     m=255;
   }
-    Serial.write(m);
+  
+  Serial.println(m);
   move(m);
 
 }
