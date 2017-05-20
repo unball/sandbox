@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 int m;
 int pwm = 9;
 int stby = 8;
