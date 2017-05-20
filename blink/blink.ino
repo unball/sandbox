@@ -1,15 +1,17 @@
-int led=17;
-
-void setup() {
-  pinMode(led,OUTPUT);
-
+int m;
+void setup(){
+  Serial.begin(9600); //baudrate
 }
-
-void loop() {
-  
-  digitalWrite(led,HIGH);
-  delay(100);
-  digitalWrite(led,LOW);
-  delay(100);
-
+void loop(){
+  if (Serial.available() > 0){
+    int m = Serial.read();
+    
 }
+  if (m<0){
+    m=0;
+  }
+  if (m<255){
+    m=255;
+    }
+    Serial.write(m);
+  }
