@@ -1,5 +1,6 @@
 
 int m;
+char incomingByte;
 int pwm = 9;
 int stby = 8;
 int ain1 = 7;
@@ -32,22 +33,32 @@ void setup(){
 
 
 void loop() {
-  Serial.println("a");
+  
 
   if (Serial.available() > 0){
-    m = Serial.read();
+    m = 0;
+    while (1){
+      incomingByte = Serial.read ();
+      if (incomingByte == '\n') break;
+      if (incomingByte == -1) continue;
+      m *= 10;
+      m = ((incomingByte - 48) + m);
     }
+     if (m > 255){
+        m = 255;
+     }
+     if (m < 0){
+      m = 0;
+     }
+      Serial.println(m);   
+   }
    
-  if (m<0){
-    m=0;
-  }
-  if (m>255){
-    m=255;
-  }
+    
+   
+   
   
-  Serial.println(m);
   move(m);
-
+  
 }
  
 
