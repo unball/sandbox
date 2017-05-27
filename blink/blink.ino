@@ -1,4 +1,3 @@
-
 int m;
 char incomingByte;
 int pwm = 9;
@@ -76,5 +75,3 @@ void loop() {
       Est_PB = pulseB;
       Serial.println (i);  
 }
- 
-
