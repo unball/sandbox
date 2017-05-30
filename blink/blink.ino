@@ -4,13 +4,7 @@ int pwm = 9;
 int stby = 8;
 int ain1 = 7;
 int ain2 = 6;
-int leitorB = 16;
-int leitorA = 14;
-int pulseB;
-int pulseA;
-int i = 0;
-int Est_PA = 0;
-int Est_PB = 0;
+
 
 
 void move(int valor){
@@ -34,7 +28,6 @@ void move(int valor){
 
 void setup(){
   Serial.begin(9600); //baudrate
-  pinMode (leitorB, INPUT);
 }
 
 
@@ -56,22 +49,13 @@ void loop() {
      if (m < 0){
       m = 0;
      }
-      /*Serial.println(m);*/   
+      Serial.println(m);   
    }
    
-    move(m);
     
-    pulseB = digitalRead (leitorB);
-    pulseA = digitalRead (leitorA);
-    
-      if (pulseB > Est_PB){
-        if (pulseA){
-          i++;
-          }
-         else{
-          i--;
-          }
-      }
-      Est_PB = pulseB;
-      Serial.println (i);  
+   
+   
+  
+  move(m);
+  
 }
